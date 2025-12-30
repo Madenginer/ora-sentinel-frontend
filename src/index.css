@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@keyframes border-pulse-red {
+  0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+  100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+.border-pulse-red {
+  animation: border-pulse-red 0.7s cubic-bezier(0.4,0,0.2,1);
+  border-color: #ef4444 !important;
+}
+@keyframes border-pulse-blue {
+  0% { box-shadow: 0 0 0 0 rgba(59,130,246,0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(59,130,246,0); }
+  100% { box-shadow: 0 0 0 0 rgba(59,130,246,0); }
+}
+.border-pulse-blue {
+  animation: border-pulse-blue 0.7s cubic-bezier(0.4,0,0.2,1);
+  border-color: #3b82f6 !important;
+}
+@keyframes border-pulse-yellow {
+  0% { box-shadow: 0 0 0 0 rgba(250,204,21,0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(250,204,21,0); }
+  100% { box-shadow: 0 0 0 0 rgba(250,204,21,0); }
+}
+.border-pulse-yellow {
+  animation: border-pulse-yellow 0.7s cubic-bezier(0.4,0,0.2,1);
+  border-color: #facc15 !important;
+}
+@keyframes arrow-bounce {
+  0% { transform: translateY(0) scale(1); opacity: 0.7; }
+  30% { transform: translateY(-8px) scale(1.15); opacity: 1; }
+  60% { transform: translateY(2px) scale(0.95); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 0.7; }
+}
+.animate-arrow-bounce {
+  animation: arrow-bounce 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color: #e2e8f0;
+  background-color: #020617;
+}
+
+body {
+  margin: 0;
+  font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+  background: radial-gradient(circle at 20% 20%, rgba(30, 136, 229, 0.06), transparent 25%),
+    radial-gradient(circle at 80% 10%, rgba(239, 68, 68, 0.05), transparent 25%),
+    #020617;
+  color: #e2e8f0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Smooth transitions for all interactive elements */
+button,
+a,
+input,
+select,
+textarea {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Button base styles with ripple effect */
+@layer components {
+  .btn-interactive {
+    @apply relative overflow-hidden transition-all duration-300;
+  }
+
+  .btn-interactive:before {
+    content: '';
+    @apply absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+  }
+
+  .btn-interactive:hover:before {
+    @apply opacity-10;
+  }
+
+  .btn-interactive:active {
+    @apply scale-95;
+  }
+
+  /* Card hover lift effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Link hover effect */
+  .link-hover {
+    @apply relative transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-pertamina-blue after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  /* Glow on hover */
+  .glow-hover {
+    @apply transition-all duration-300 hover:shadow-glow hover:shadow-glow-lg;
+  }
+}
+
+/* Loading skeleton */
+@keyframes skeleton-loading {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite;
+  background: linear-gradient(
+    90deg,
+    #1e293b 25%,
+    #334155 50%,
+    #1e293b 75%
+  );
+  background-size: 1000px 100%;
+}
+
